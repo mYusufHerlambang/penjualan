@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body" th:data-role="${#authentication.getAuthorities()}">
+<nav th:replace="~{layout :: navigation}"></nav>
+<header th:replace="~{layout :: header (${breadCrumbs})}"></header>
+<main>
+    <div class="grid-tiles product-index">
+        <div class="tiles-container">
+            <div class="tile" th:each="cart : ${carts}">
+                <div class="image-container" th:if="${cart.image == null}">
+                    <img th:src="@{/resources/image/product/no-image.jpg}">
+                </div>
+                <div class="image-container" th:if="${cart.image != null}">
+                    <img th:src="@{/resources/image/product/{path}(path=${cart.image})}">
+                </div>
+                <div style="padding-top: 15px" class="title" th:text="${cart.productName}"></div>
+                <div style="padding-left : 60px; padding-top : 10px">
+                    <a th:href="@{/product/list}" class="blue-button delete-button">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{layout :: footer}"></footer>
+<th:block th:replace="~{layout :: javascript}"></th:block>
+</body>
+</html>

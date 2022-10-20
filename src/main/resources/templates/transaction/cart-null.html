@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body" th:data-role="${#authentication.getAuthorities()}">
+<nav th:replace="~{layout :: navigation}"></nav>
+<header th:replace="~{layout :: header (${breadCrumbs})}"></header>
+<main>
+
+    <div class="grid-tiles product-index">
+        <h1>
+            Anda belum mempunyai product dikeranjang
+        </h1>
+        <div style="padding-bottom: 15px">
+            <a th:href="@{/product/list}" class="blue-button delete-button">Back</a>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{layout :: footer}"></footer>
+<th:block th:replace="~{layout :: javascript}"></th:block>
+</body>
+</html>
